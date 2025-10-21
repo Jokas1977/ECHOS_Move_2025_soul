@@ -79,13 +79,14 @@ export default function ECHOSMoveLanding() {
             <LogoMark />
             <span className="sr-only">ECHOS Move</span>
           </a>
-          <nav className="hidden md:flex items-center gap-6 text-sm">
-            <a href="#vision" className="hover:opacity-80">Visão</a>
-            <a href="#pillars" className="hover:opacity-80">Pilares</a>
-            <a href="#programs" className="hover:opacity-80">Programas</a>
-            <a href="#events" className="hover:opacity-80">Eventos</a>
-            <a href="#join" className="hover:opacity-80">Participar</a>
-          </nav>
+          <nav className="hidden md:flex items-center gap-8">
+  <a href="#about" className="hover:opacity-80">Sobre</a>
+  <a href="#vision" className="hover:opacity-80">Visão</a>
+  <a href="#events" className="hover:opacity-80">Eventos</a>
+  <a href="#programs" className="hover:opacity-80">Programas</a>
+  <a href="#voices" className="hover:opacity-80">Vozes</a>
+  <a href="#contact" className="hover:opacity-80">Contactos</a>
+</nav>
           <a href="#join" className="hidden md:inline-flex items-center rounded-xl px-4 py-2 text-sm font-semibold text-white shadow" style={{ background: `linear-gradient(135deg, ${C2}, ${C1})` }}>Juntar‑me</a>
         </Container>
       </header>
@@ -122,6 +123,44 @@ export default function ECHOSMoveLanding() {
           </div>
         </Container>
       </Section>
+
+      <Section id="events" title="Eventos">
+  <p className="mx-auto max-w-2xl text-center text-lg text-slate-700 mb-10">
+    Encontros, workshops e retiros criados para despertar o movimento interior e a ligação entre arte, corpo e consciência.
+  </p>
+
+  <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+    {/* Evento 1 */}
+    <div className="rounded-2xl bg-white shadow-md p-6 hover:shadow-lg transition-shadow">
+      <h3 className="text-xl font-semibold text-slate-900">Retiro de Equinócio</h3>
+      <p className="mt-2 text-slate-600">
+        Três dias de arte, meditação e expressão corporal em contacto com a natureza.
+      </p>
+      <a
+        href="#join"
+        className="mt-4 inline-block rounded-xl px-5 py-2 font-semibold text-white"
+        style={{ background: "linear-gradient(135deg, #7da8ba, #9ec0be)" }}
+      >
+        Inscrever
+      </a>
+    </div>
+
+    {/* Evento 2 */}
+    <div className="rounded-2xl bg-white shadow-md p-6 hover:shadow-lg transition-shadow">
+      <h3 className="text-xl font-semibold text-slate-900">Workshop “A Voz e o Corpo”</h3>
+      <p className="mt-2 text-slate-600">
+        Um mergulho na vibração e ressonância da voz como ferramenta de transformação interior.
+      </p>
+      <a
+        href="#join"
+        className="mt-4 inline-block rounded-xl px-5 py-2 font-semibold text-white"
+        style={{ background: "linear-gradient(135deg, #7fafae, #9ec0be)" }}
+      >
+        Participar
+      </a>
+    </div>
+  </div>
+</Section>
 
       <Section id="programs">
         <Container>
