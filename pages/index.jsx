@@ -124,43 +124,30 @@ export default function ECHOSMoveLanding() {
         </Container>
       </Section>
 
-      <Section id="events" title="Eventos">
-  <p className="mx-auto max-w-2xl text-center text-lg text-slate-700 mb-10">
-    Encontros, workshops e retiros criados para despertar o movimento interior e a ligação entre arte, corpo e consciência.
-  </p>
+      <Section id="events" className="bg-gradient-to-b from-white to-[rgba(255,255,255,0.6)]">
+  <Container>
+    <h2 className="text-2xl md:text-3xl font-bold" style={{ color: C2 }}>Eventos</h2>
 
-  <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-    {/* Evento 1 */}
-    <div className="rounded-2xl bg-white shadow-md p-6 hover:shadow-lg transition-shadow">
-      <h3 className="text-xl font-semibold text-slate-900">Retiro de Equinócio</h3>
-      <p className="mt-2 text-slate-600">
-        Três dias de arte, meditação e expressão corporal em contacto com a natureza.
-      </p>
-      <a
-        href="#join"
-        className="mt-4 inline-block rounded-xl px-5 py-2 font-semibold text-white"
-        style={{ background: "linear-gradient(135deg, #7da8ba, #9ec0be)" }}
-      >
-        Inscrever
-      </a>
+    <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <EventCard
+        date="22–24 Mar"
+        title="Retiro do Equinócio"
+        text="Três dias de imersão em voz, movimento e criação em natureza."
+      />
+      <EventCard
+        date="12 Abr"
+        title="Workshop Voz & Corpo"
+        text="A ressonância da palavra e o corpo como instrumento de presença."
+      />
+      <EventCard
+        date="Maio"
+        title="Encontro ECHOS Aveiro"
+        text="Sessão aberta de práticas ECHOS e partilha comunitária."
+      />
     </div>
-
-    {/* Evento 2 */}
-    <div className="rounded-2xl bg-white shadow-md p-6 hover:shadow-lg transition-shadow">
-      <h3 className="text-xl font-semibold text-slate-900">Workshop “A Voz e o Corpo”</h3>
-      <p className="mt-2 text-slate-600">
-        Um mergulho na vibração e ressonância da voz como ferramenta de transformação interior.
-      </p>
-      <a
-        href="#join"
-        className="mt-4 inline-block rounded-xl px-5 py-2 font-semibold text-white"
-        style={{ background: "linear-gradient(135deg, #7fafae, #9ec0be)" }}
-      >
-        Participar
-      </a>
-    </div>
-  </div>
+  </Container>
 </Section>
+
 
       <Section id="programs">
         <Container>
