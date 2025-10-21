@@ -1,3 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Extra seguro: adiciona uma regra mínima de CSS para garantir que há conteúdo */
+html, body { min-height: 100%; }
