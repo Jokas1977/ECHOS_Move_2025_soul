@@ -52,7 +52,15 @@ export default function EventPage({ event }) {
           {date && <p><span className="font-medium">Data:</span> {date}</p>}
           {location && <p><span className="font-medium">Local:</span> {location}</p>}
         </div>
-        {text && <p className="mt-6 text-lg leading-relaxed text-slate-700">{text}</p>}
+        { text && <p className="mt-6 text-lg leading-relaxed text-slate-700">{text}</p> }
+
+{/* Conteúdo extra editável (Markdown) */}
+{event.content && (
+  <div
+    className="mt-8 space-y-4 leading-relaxed text-slate-700"
+    dangerouslySetInnerHTML={{ __html: marked.parse(event.content) }}
+  />
+)}
 
         {registrationUrl && (
           <div className="mt-8">
