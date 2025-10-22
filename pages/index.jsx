@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import events from '../../data/events.json';
-import programs from '../../data/programs.json';
+import events from '../data/events.json';
+import programs from '../data/programs.json';
 
 // ECHOS Move — Landing Page com logotipo personalizado
 // Paleta
