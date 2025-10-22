@@ -9,14 +9,25 @@ const Container = ({ children, className = "" }) => (
 
 // SSG – gera páginas estáticas para cada evento
 export async function getStaticPaths() {
-  const paths = events.map(e => ({ params: { slug: e.slug } }));
+  // filtra só eventos com slug string não vazia
+  const valid = (Array.isArray(events) ? events : [])
+    .filter(e => e && typeof e.slug === "string" && e.slug.trim() !== "");
+
+  const paths = valid.map(e => ({ params: { slug: e.slug } }));
   return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
-  const event = events.find(e => e.slug === params.slug) || null;
+  const list = Array.isArray(events) ? events : [];
+  const event = list.find(e => e && e.slug === params.slug) || null;
+
+  if (!event) {
+    return { notFound: true };
+  }
+
   return { props: { event } };
 }
+
 
 export default function EventPage({ event }) {
   const { title, date, text, image, location, registrationUrl } = event;
