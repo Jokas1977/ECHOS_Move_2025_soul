@@ -52,28 +52,21 @@ export default function EventPage({ event }) {
           {location && <p><span className="font-medium">Local:</span> {location}</p>}
         </div>
 
-        {text && <p className="mt-6 text-lg leading-relaxed text-slate-700">{text}</p>}
+       { text && <p className="mt-6 text-lg leading-relaxed text-slate-700">{text}</p> }
 
-        {/* 🔽 RENDER DO MARKDOWN DO JSON */}
-        {html && (
-          <div
-            className="mt-8 space-y-4 leading-relaxed text-slate-700"
-            dangerouslySetInnerHTML={{ __html: html }}
-          />
-        )}
+{event.content && (
+  <div
+    className="mt-8 space-y-4 leading-relaxed text-slate-700"
+    dangerouslySetInnerHTML={{ __html: marked.parse(event.content) }}
+  />
+)}
 
-        {registrationUrl && (
-          <div className="mt-8">
-            <a
-              href={registrationUrl}
-              target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center rounded-xl px-5 py-3 font-semibold text-white shadow"
-              style={{ background: `linear-gradient(135deg, ${C1}, ${C2})` }}
-            >
-              Inscrever-me
-            </a>
-          </div>
-        )}
+{ registrationUrl && (
+  <div className="mt-8">
+    <a href={registrationUrl} ...>Inscrever-me</a>
+  </div>
+)}
+
 
         {/* DEBUG opcional: remove depois */}
         {/* <pre className="mt-10 text-xs bg-slate-50 p-3 rounded">{JSON.stringify(event, null, 2)}</pre> */}
