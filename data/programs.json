@@ -1,0 +1,26 @@
+[
+  {
+    "date": "Mensal",
+    "title": "Laboratório de Voz & Palavra",
+    "text": "Explorar a ressonância da palavra como vetor de presença, criação e ligação.",
+    "cta": "Inscrever",
+    "url": "#join",
+    "image": "/images/programs/laboratorio-voz.jpg"
+  },
+  {
+    "date": "Trimestral",
+    "title": "Residência Criativa",
+    "text": "Imersões curtas para cocriação entre artes, reflexão e ação comunitária.",
+    "cta": "Candidatar",
+    "url": "#join",
+    "image": "/images/programs/residencia-criativa.jpg"
+  },
+  {
+    "date": "Contínuo",
+    "title": "Círculos ECHOS",
+    "text": "Grupos locais para prática, partilha e apoio mútuo — Aveiro e online.",
+    "cta": "Entrar",
+    "url": "#join",
+    "image": "/images/programs/circulos-echos.jpg"
+  }
+]
