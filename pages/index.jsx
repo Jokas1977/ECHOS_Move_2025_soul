@@ -34,8 +34,7 @@ const PillarCard = ({ title, text }) => (
 );
 
 const EventCard = ({ date, title, text, image, slug, url, cta = "Saber mais" }) => {
-  // se houver url usa-o; caso contrário, constrói a rota dinâmica pelo slug
-  const href = url || (slug ? `/events/${slug}` : "#`);
+  const href = url || (slug ? `/events/${slug}` : "#");
   return (
     <motion.div
       whileHover={{ y: -4 }}
@@ -63,8 +62,6 @@ const EventCard = ({ date, title, text, image, slug, url, cta = "Saber mais" }) 
     </motion.div>
   );
 };
-
-
 
 
 const Testimonial = ({ quote, author }) => (
