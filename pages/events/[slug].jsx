@@ -2,12 +2,12 @@ import Head from "next/head";
 import eventsData from "../../data/events.json";
 import { marked } from "marked";
 
-// lista de eventos (aceita array direto ou { events: [...] })
+// lista: aceita array direto ou { events: [...] }
 const list = Array.isArray(eventsData) ? eventsData : (eventsData?.events ?? []);
 
 export async function getStaticPaths() {
   const paths = list
-    .filter(e => e && typeof e.slug === "string" && e.slug.trim().length > 0)
+    .filter(e => e && typeof e.slug === "string" && e.slug.trim())
     .map(e => ({ params: { slug: e.slug } }));
   return { paths, fallback: false };
 }
@@ -22,6 +22,10 @@ export default function EventPage({ event }) {
   const { title, date, text, image, location, registrationUrl, content } = event;
   const C1 = "#7da8ba";
   const C2 = "#7fafae";
+
+  // prepara HTML do markdown (fallback para string simples se "marked" falhar)
+  let html = "";
+  try { html = content ? marked.parse(content) : ""; } catch { html = content || ""; }
 
   return (
     <main className="min-h-screen text-slate-800" style={{ background: `linear-gradient(180deg, ${C1}14, #ffffff 55%)` }}>
@@ -50,11 +54,11 @@ export default function EventPage({ event }) {
 
         {text && <p className="mt-6 text-lg leading-relaxed text-slate-700">{text}</p>}
 
-        {/* 🔽 AQUI: render do Markdown vindo do events.json */}
-        {content && (
+        {/* 🔽 RENDER DO MARKDOWN DO JSON */}
+        {html && (
           <div
             className="mt-8 space-y-4 leading-relaxed text-slate-700"
-            dangerouslySetInnerHTML={{ __html: marked.parse(content) }}
+            dangerouslySetInnerHTML={{ __html: html }}
           />
         )}
 
@@ -62,8 +66,7 @@ export default function EventPage({ event }) {
           <div className="mt-8">
             <a
               href={registrationUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center rounded-xl px-5 py-3 font-semibold text-white shadow"
               style={{ background: `linear-gradient(135deg, ${C1}, ${C2})` }}
             >
@@ -71,6 +74,9 @@ export default function EventPage({ event }) {
             </a>
           </div>
         )}
+
+        {/* DEBUG opcional: remove depois */}
+        {/* <pre className="mt-10 text-xs bg-slate-50 p-3 rounded">{JSON.stringify(event, null, 2)}</pre> */}
       </section>
     </main>
   );
