@@ -1,19 +1,25 @@
 [
-  {
+ {
+    "slug": "retiro-do-equinocio",
     "date": "22–24 Mar",
     "title": "Retiro do Equinócio",
     "text": "Três dias de imersão em voz, movimento e criação em natureza.",
+    "location": "Serra da Freita, Portugal",
     "cta": "Inscrever",
-    "url": "#join",
-    "image": "/images/events/retiro.jpg"
+    "url": "/events/retiro-do-equinocio",
+    "registrationUrl": "https://tally.so/r/SEU_ID",
+    "image": "/images/events/retiro-equinocio.webp"
   },
   {
+    "slug": "workshop-voz-e-corpo",
     "date": "12 Abr",
     "title": "Workshop Voz & Corpo",
     "text": "A ressonância da palavra e o corpo como instrumento de presença.",
+    "location": "Aveiro, Portugal",
     "cta": "Participar",
-    "url": "#join",
-    "image": "/images/events/voz.jpg"
+    "url": "/events/workshop-voz-e-corpo",
+    "registrationUrl": "https://tally.so/r/SEU_OUTRO_ID",
+    "image": "/images/events/workshop-voz-corpo.webp"
   },
   {
     "date": "Maio",
