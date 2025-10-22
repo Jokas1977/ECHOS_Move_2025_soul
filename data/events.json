@@ -1,0 +1,26 @@
+[
+  {
+    "date": "22–24 Mar",
+    "title": "Retiro do Equinócio",
+    "text": "Três dias de imersão em voz, movimento e criação em natureza.",
+    "cta": "Inscrever",
+    "url": "#join",
+    "image": "/images/events/retiro-equinocio.jpg"
+  },
+  {
+    "date": "12 Abr",
+    "title": "Workshop Voz & Corpo",
+    "text": "A ressonância da palavra e o corpo como instrumento de presença.",
+    "cta": "Participar",
+    "url": "#join",
+    "image": "/images/events/workshop-voz-corpo.jpg"
+  },
+  {
+    "date": "Maio",
+    "title": "Encontro ECHOS Aveiro",
+    "text": "Sessão aberta de práticas ECHOS e partilha comunitária.",
+    "cta": "Saber mais",
+    "url": "#join",
+    "image": "/images/events/encontro-aveiro.jpg"
+  }
+]
