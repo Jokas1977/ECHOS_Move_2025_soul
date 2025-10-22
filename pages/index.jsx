@@ -134,7 +134,7 @@ export default function ECHOSMoveLanding() {
         </Container>
       </Section>
 
-     import events from '../data/events.json';
+    
 ...
 <Section id="events" className="bg-gradient-to-b from-white to-[rgba(255,255,255,0.6)]">
   <Container>
@@ -149,7 +149,7 @@ export default function ECHOSMoveLanding() {
 
 
 
-     import programs from '../data/programs.json';
+  
 ...
 <Section id="programs">
   <Container>
