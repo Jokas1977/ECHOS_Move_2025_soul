@@ -33,38 +33,36 @@ const PillarCard = ({ title, text }) => (
   </motion.div>
 );
 
-const EventCard = ({ date, title, text, url = "#", cta = "Saber mais", image }) => (
-  <motion.div
-    whileHover={{ y: -4 }}
-    transition={{ duration: 0.3 }}
-    className="rounded-2xl overflow-hidden shadow-md bg-white/70 backdrop-blur border border-white/40"
-  >
-    {image && (
-      <img
-        src={image}
-        alt={title}
-        className="w-full h-48 object-cover"
-      />
-    )}
-    <div className="p-6">
-      <p className="text-sm font-medium" style={{ color: C1 }}>{date}</p>
-      <h4 className="mt-1 text-xl font-semibold text-slate-900">{title}</h4>
-      <p className="mt-2 text-slate-600">{text}</p>
-      <div className="mt-4">
-        <a
-          href={url}
-          className="inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold text-white shadow-sm"
-          style={{ background: `linear-gradient(135deg, ${C1}, ${C2})` }}
-        >
-          {cta}
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
-            <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </a>
+const EventCard = ({ date, title, text, image, slug, url, cta = "Saber mais" }) => {
+  const href = url || (slug ? `/events/${slug}` : "#");
+  return (
+    <motion.div
+      whileHover={{ y: -4 }}
+      transition={{ duration: 0.3 }}
+      className="rounded-2xl overflow-hidden shadow-md bg-white/70 backdrop-blur border border-white/40"
+    >
+      {image && <img src={image} alt={title} className="w-full h-48 object-cover" />}
+      <div className="p-6">
+        <p className="text-sm font-medium" style={{ color: C1 }}>{date}</p>
+        <h4 className="mt-1 text-xl font-semibold text-slate-900">{title}</h4>
+        <p className="mt-2 text-slate-600">{text}</p>
+        <div className="mt-4">
+          <a
+            href={href}
+            className="inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold text-white shadow-sm"
+            style={{ background: `linear-gradient(135deg, ${C1}, ${C2})` }}
+          >
+            {cta}
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
+              <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
+        </div>
       </div>
-    </div>
-  </motion.div>
-);
+    </motion.div>
+  );
+};
+
 
 
 const Testimonial = ({ quote, author }) => (
