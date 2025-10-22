@@ -1,10 +1,10 @@
 [
-{
+  {
     "slug": "retiro-do-equinocio",
     "date": "22–24 Mar",
     "title": "Retiro do Equinócio",
     "text": "Três dias de imersão em voz, movimento e criação em natureza.",
-    "image": "/images/events/retiro-equinocio.webp",
+    "image": "/images/events/retiro-equinócio.webp",
     "registrationUrl": "https://tally.so/r/SEU_ID"
   },
   {
@@ -15,11 +15,12 @@
     "image": "/images/events/workshop-voz-corpo.webp"
   },
   {
+    "slug": "encontro-echos-aveiro",
     "date": "Maio",
     "title": "Encontro ECHOS Aveiro",
     "text": "Sessão aberta de práticas ECHOS e partilha comunitária.",
     "cta": "Saber mais",
-    "url": "#join",
+    "url": "/events/encontro-echos-aveiro",
     "image": "/images/events/meet2.jpg"
   }
 ]
