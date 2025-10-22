@@ -1,24 +1,27 @@
 [
-  {
+ {
     "slug": "retiro-do-equinocio",
     "date": "22–24 Mar",
     "title": "Retiro do Equinócio",
     "text": "Três dias de imersão em voz, movimento e criação em natureza.",
     "image": "/images/events/retiro-equinocio.webp",
-    "registrationUrl": "https://tally.so/r/SEU_ID"
+    "registrationUrl": "https://tally.so/r/SEU_ID",
+    "content": "## Sobre o retiro\n\n- **Facilitação:** Equipa ECHOS Move\n- **Inclui:** Alojamento e refeições vegetarianas\n\n### Programa diário\n1. Abertura de voz e corpo\n2. Caminhada consciente\n3. Laboratório de criação\n\n> Traz roupa confortável e garrafa de água.\n\n![Paisagem](/images/events/retiro-equinocio.webp)"
   },
   {
     "slug": "workshop-voz-e-corpo",
     "date": "12 Abr",
     "title": "Workshop Voz & Corpo",
     "text": "A ressonância da palavra e o corpo como instrumento de presença.",
-    "image": "/images/events/workshop-voz-corpo.webp"
+    "image": "/images/events/workshop-voz-corpo.webp",
+    "content": "### Objetivos\n- Explorar a respiração e a ressonância\n- Práticas para **presença** e **expressão**\n\n### O que trazer\n- Caderno, caneta, água"
   },
   {
     "slug": "encontro-echos-aveiro",
     "date": "Maio",
     "title": "Encontro ECHOS Aveiro",
     "text": "Sessão aberta de práticas ECHOS e partilha comunitária.",
-    "image": "/images/events/meet2.jpg"
+    "image": "/images/events/meet2.jpg",
+    "content": "### Objetivos\n- Explorar a respiração e a ressonância\n- Práticas para **presença** e **expressão**\n\n### O que trazer\n- Caderno, caneta, água"
   }
 ]
