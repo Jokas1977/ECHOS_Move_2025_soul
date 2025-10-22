@@ -1,5 +1,7 @@
 import Head from "next/head";
 import eventsData from "../../data/events.json"; // <- alias claro
+import { marked } from "marked";
+
 
 // garante que temos mesmo um array de eventos
 const list = Array.isArray(eventsData) ? eventsData : (eventsData?.events ?? []);
