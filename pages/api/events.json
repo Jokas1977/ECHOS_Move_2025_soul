@@ -1,0 +1,7 @@
+import events from "../../data/events.json";
+
+export default function handler(req, res) {
+  // Garante que devolve sempre um array
+  const list = Array.isArray(events) ? events : (events?.events ?? []);
+  res.status(200).json(list);
+}
