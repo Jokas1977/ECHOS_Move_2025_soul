@@ -69,7 +69,10 @@ export default function EventPage({ event }) {
 
 
         {/* DEBUG opcional: remove depois */}
-        <pre className="mt-10 text-xs bg-slate-50 p-3 rounded">{JSON.stringify(event, null, 2)}</pre> 
+      <pre className="mt-10 text-xs bg-slate-50 p-3 rounded overflow-auto">
+  {JSON.stringify(event, null, 2)}
+</pre>
+
       </section>
     </main>
   );
