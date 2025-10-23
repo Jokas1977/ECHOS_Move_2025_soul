@@ -1,7 +1,8 @@
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import { marked } from "marked";
 
-// LÊ O JSON DENTRO DAS FUNÇÕES (evita caches estranhos do bundler)
+// ---- Lê os eventos no build (SSR) ----
 async function loadEvents() {
   const mod = await import("../../data/events.json");
   const data = mod.default ?? mod;
@@ -11,37 +12,54 @@ async function loadEvents() {
 export async function getStaticPaths() {
   const list = await loadEvents();
   const paths = list
-    .filter(e => e && typeof e.slug === "string" && e.slug.trim().length > 0)
-    .map(e => ({ params: { slug: e.slug } }));
+    .filter((e) => e && typeof e.slug === "string" && e.slug.trim().length > 0)
+    .map((e) => ({ params: { slug: e.slug } }));
   return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
   const list = await loadEvents();
-  const event = list.find(e => e && e.slug === params.slug) || null;
-
+  const event = list.find((e) => e && e.slug === params.slug) || null;
   if (!event) return { notFound: true };
 
-  // Prepara HTML do markdown aqui (para não depender do cliente)
+  // Pré-renderiza o markdown no build (se existir)
   let html = "";
-  try { html = event.content ? marked.parse(String(event.content)) : ""; } catch { html = String(event.content || ""); }
+  try {
+    html = event.content ? marked.parse(String(event.content)) : "";
+  } catch {
+    html = String(event.content || "");
+  }
 
-  return {
-    props: {
-      event: {
-        ...event,
-        __htmlContent: html,                 // passa HTML pronto
-        __debugHasContent: Boolean(event.content),
-        __debugContentLength: event.content ? String(event.content).length : 0
-      }
-    }
-  };
+  return { props: { event: { ...event, __htmlContent: html } } };
 }
 
 export default function EventPage({ event }) {
-  const { title, date, text, image, location, registrationUrl, __htmlContent } = event;
+  const { slug, title, date, text, image, location, registrationUrl, __htmlContent, content } = event;
   const C1 = "#7da8ba";
   const C2 = "#7fafae";
+
+  // Estado do HTML a mostrar (usa SSR se existir; senão, busca em runtime)
+  const [html, setHtml] = useState(__htmlContent || "");
+
+  // Fallback em runtime: se não veio content no build, ler via API /api/events
+  useEffect(() => {
+    if (html) return; // já temos HTML do SSR
+    async function fetchContent() {
+      try {
+        const res = await fetch("/api/events", { cache: "no-store" });
+        const all = await res.json();
+        const current = Array.isArray(all) ? all.find((e) => e.slug === slug) : null;
+        const md = current?.content ? String(current.content) : "";
+        if (md) {
+          try { setHtml(marked.parse(md)); } catch { setHtml(md); }
+        }
+      } catch (e) {
+        console.error("Falha a obter conteúdo do evento:", e);
+      }
+    }
+    // só tenta se o prop "content" também não veio
+    if (!content) fetchContent();
+  }, [slug, html, content]);
 
   return (
     <main className="min-h-screen text-slate-800" style={{ background: `linear-gradient(180deg, ${C1}14, #ffffff 55%)` }}>
@@ -70,18 +88,14 @@ export default function EventPage({ event }) {
 
         {text && <p className="mt-6 text-lg leading-relaxed text-slate-700">{text}</p>}
 
-        {/* RENDER DO MARKDOWN (HTML já vindo do getStaticProps) */}
-        {__htmlContent && (
+        {/* Corpo em Markdown (do SSR ou carregado via API) */}
+        {html ? (
           <div
             className="mt-8 space-y-4 leading-relaxed text-slate-700"
-            dangerouslySetInnerHTML={{ __html: __htmlContent }}
+            dangerouslySetInnerHTML={{ __html: html }}
           />
-        )}
-
-        {!__htmlContent && (
-          <p className="mt-8 text-slate-500">
-            Mais detalhes brevemente. Para inscrições, usa o botão acima.
-          </p>
+        ) : (
+          <p className="mt-8 text-slate-500">Mais detalhes brevemente. Para inscrições, usa o botão acima.</p>
         )}
 
         {registrationUrl && (
@@ -97,11 +111,6 @@ export default function EventPage({ event }) {
             </a>
           </div>
         )}
-
-        {/* DEBUG — remove quando quiseres */}
-        <pre className="mt-10 text-xs bg-slate-50 p-3 rounded overflow-auto">
-{JSON.stringify({slug: event.slug, hasContent: event.__debugHasContent, length: event.__debugContentLength}, null, 2)}
-        </pre>
       </section>
     </main>
   );
