@@ -99,17 +99,30 @@ export default function EventPage({ event }) {
         )}
 
         {registrationUrl && (
-          <div className="mt-8">
-            <a
-              href={registrationUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center rounded-xl px-5 py-3 font-semibold text-white shadow"
-              style={{ background: `linear-gradient(135deg, ${C1}, ${C2})` }}
-            >
-              Inscrever-me
-            </a>
-          </div>
+  <div className="mt-8">
+    <a
+      href={registrationUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center rounded-xl px-5 py-3 font-semibold text-white shadow"
+      style={{ background: `linear-gradient(135deg, ${C1}, ${C2})` }}
+    >
+      Inscrever-me
+    </a>
+  </div>
+)}
+
+{/* Botão para voltar à página inicial */}
+<div className="mt-10">
+  <a
+    href="/"
+    className="inline-flex items-center rounded-xl px-5 py-3 font-semibold text-white shadow transition hover:opacity-90"
+    style={{ background: `linear-gradient(135deg, ${C2}, ${C1})` }}
+  >
+    ← Voltar à página inicial
+  </a>
+</div>
+
         )}
       </section>
     </main>
