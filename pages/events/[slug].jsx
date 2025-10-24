@@ -122,8 +122,6 @@ export default function EventPage({ event }) {
     ← Voltar à página inicial
   </a>
 </div>
-
-        )}
       </section>
     </main>
   );
