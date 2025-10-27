@@ -1,23 +1,26 @@
 [
   {
+    "slug": "residencia-artistica-aveiro",
     "date": "2025-03-10",
     "title": "ECHOS Move apresenta residência artística em Aveiro",
     "text": "Chamada aberta para criadores que exploram voz, corpo e palavra.",
     "image": "/images/news/residencia-aveiro.webp",
-    "url": "https://exemplo.com/noticia-1"
+    "content": "## Sobre o projeto\nResidência de 10 dias dedicada à experimentação artística interdisciplinar.\n\n### Candidaturas\n- Envio de portefólio e carta de motivação até 20 de março."
   },
   {
+    "slug": "parceria-teatro-municipal",
     "date": "2025-02-18",
     "title": "Parceria com o Teatro Municipal",
     "text": "Ciclo de oficinas e mostra final com a comunidade local.",
     "image": "/images/news/parceria-teatro.webp",
-    "url": "https://exemplo.com/noticia-2"
+    "content": "A parceria entre a associação e o Teatro Municipal visa integrar o movimento ECHOS no contexto cultural da cidade."
   },
   {
+    "slug": "nova-identidade-visual",
     "date": "2025-01-30",
     "title": "Nova identidade visual ECHOS Move",
     "text": "Apresentamos o novo logotipo e o manifesto do movimento.",
     "image": "/images/news/identidade-visual.webp",
-    "url": "https://exemplo.com/noticia-3"
+    "content": "O novo logotipo reflete a ressonância, o movimento e a integração — valores centrais da ECHOS Move."
   }
 ]
