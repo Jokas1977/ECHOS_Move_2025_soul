@@ -1,7 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import events from '../data/events.json';
-import programs from '../data/programs.json';
+import news from '../data/news.json';
+
 
 // ECHOS Move — Landing Page com logotipo personalizado
 // Paleta
@@ -34,7 +35,10 @@ const PillarCard = ({ title, text }) => (
 );
 
 const EventCard = ({ date, title, text, image, slug, url, cta = "Saber mais" }) => {
-  const href = url || (slug ? `/events/${slug}` : "#");
+  // Para eventos: vai ao slug. Para notícias: usa o url externo se existir.
+  const href = url ? url : (slug ? `/events/${slug}` : "#");
+  const external = Boolean(url);
+
   return (
     <motion.div
       whileHover={{ y: -4 }}
@@ -49,6 +53,7 @@ const EventCard = ({ date, title, text, image, slug, url, cta = "Saber mais" }) 
         <div className="mt-4">
           <a
             href={href}
+            {...(external ? { target:"_blank", rel:"noopener noreferrer" } : {})}
             className="inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold text-white shadow-sm"
             style={{ background: `linear-gradient(135deg, ${C1}, ${C2})` }}
           >
@@ -62,6 +67,7 @@ const EventCard = ({ date, title, text, image, slug, url, cta = "Saber mais" }) 
     </motion.div>
   );
 };
+
 
 
 const Testimonial = ({ quote, author }) => (
@@ -90,7 +96,7 @@ export default function ECHOSMoveLanding() {
   <a href="#about" className="hover:opacity-80">Sobre</a>
   <a href="#vision" className="hover:opacity-80">Visão</a>
   <a href="#events" className="hover:opacity-80">Eventos</a>
-  <a href="#programs" className="hover:opacity-80">Programas</a>
+  <a href="#news" className="hover:opacity-80">Notícias</a>
   <a href="#voices" className="hover:opacity-80">Vozes</a>
   <a href="#contact" className="hover:opacity-80">Contactos</a>
 </nav>
@@ -148,16 +154,20 @@ export default function ECHOSMoveLanding() {
 
   
 ...
-<Section id="programs">
+<Section id="news">
   <Container>
-    <h2 className="text-2xl md:text-3xl font-bold" style={{ color: C2 }}>Programas</h2>
+    <h2 className="text-2xl md:text-3xl font-bold" style={{ color: C2 }}>Notícias</h2>
     <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-      {programs.map((p, i) => (
-        <EventCard key={i} {...p} />
-      ))}
+      {[...news]
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .map((n, i) => (
+          <EventCard key={i} {...n} cta="Ler notícia" />
+        ))}
     </div>
   </Container>
 </Section>
+
+
 
 
       <Section id="testimonials" className="bg-[rgba(255,255,255,0.7)]">
