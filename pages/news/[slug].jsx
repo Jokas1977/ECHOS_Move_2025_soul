@@ -1,7 +1,8 @@
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import { marked } from "marked";
 
-// Lê as notícias do JSON
+// ---- lê as notícias no build (SSR) ----
 async function loadNews() {
   const mod = await import("../../data/news.json");
   const data = mod.default ?? mod;
@@ -11,30 +12,47 @@ async function loadNews() {
 export async function getStaticPaths() {
   const list = await loadNews();
   const paths = list
-    .filter((n) => n && typeof n.slug === "string" && n.slug.trim().length > 0)
-    .map((n) => ({ params: { slug: n.slug } }));
+    .filter(n => n && typeof n.slug === "string" && n.slug.trim().length > 0)
+    .map(n => ({ params: { slug: n.slug } }));
   return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
   const list = await loadNews();
-  const newsItem = list.find((n) => n && n.slug === params.slug) || null;
+  const newsItem = list.find(n => n && n.slug === params.slug) || null;
   if (!newsItem) return { notFound: true };
 
   let html = "";
-  try {
-    html = newsItem.content ? marked.parse(String(newsItem.content)) : "";
-  } catch {
-    html = String(newsItem.content || "");
-  }
+  try { html = newsItem.content ? marked.parse(String(newsItem.content)) : ""; }
+  catch { html = String(newsItem.content || ""); }
 
   return { props: { newsItem: { ...newsItem, __htmlContent: html } } };
 }
 
 export default function NewsPage({ newsItem }) {
-  const { title, date, text, image, __htmlContent } = newsItem;
+  const { slug, title, date, text, image, __htmlContent, content } = newsItem;
   const C1 = "#7da8ba";
   const C2 = "#7fafae";
+
+  // fallback em runtime (caso algum build não traga o content)
+  const [html, setHtml] = useState(__htmlContent || "");
+  useEffect(() => {
+    if (html) return;
+    async function fetchContent() {
+      try {
+        const res = await fetch("/api/news", { cache: "no-store" });
+        const all = await res.json();
+        const current = Array.isArray(all) ? all.find(n => n.slug === slug) : null;
+        const md = current?.content ? String(current.content) : "";
+        if (md) {
+          try { setHtml(marked.parse(md)); } catch { setHtml(md); }
+        }
+      } catch (e) {
+        console.warn("Falha a obter conteúdo da notícia:", e);
+      }
+    }
+    if (!content) fetchContent();
+  }, [slug, html, content]);
 
   return (
     <main className="min-h-screen text-slate-800" style={{ background: `linear-gradient(180deg, ${C1}14, #ffffff 55%)` }}>
@@ -55,18 +73,23 @@ export default function NewsPage({ newsItem }) {
       {/* Conteúdo */}
       <section className="py-10 md:py-14 mx-auto w-full max-w-5xl px-6">
         <h1 className="text-3xl md:text-4xl font-extrabold" style={{ color: C1 }}>{title}</h1>
-        <p className="mt-2 text-slate-600">{new Date(date).toLocaleDateString("pt-PT", { day: '2-digit', month: 'long', year: 'numeric' })}</p>
-
+        {date && (
+          <p className="mt-2 text-slate-600">
+            {new Date(date).toLocaleDateString("pt-PT", { day: "2-digit", month: "long", year: "numeric" })}
+          </p>
+        )}
         {text && <p className="mt-6 text-lg leading-relaxed text-slate-700">{text}</p>}
 
-        {__htmlContent && (
+        {html ? (
           <div
             className="mt-8 space-y-4 leading-relaxed text-slate-700"
-            dangerouslySetInnerHTML={{ __html: __htmlContent }}
+            dangerouslySetInnerHTML={{ __html: html }}
           />
+        ) : (
+          <p className="mt-8 text-slate-500">Mais detalhes brevemente.</p>
         )}
 
-        {/* Botão para voltar à home */}
+        {/* Voltar à Home */}
         <div className="mt-10">
           <a
             href="/"
@@ -80,3 +103,4 @@ export default function NewsPage({ newsItem }) {
     </main>
   );
 }
+
