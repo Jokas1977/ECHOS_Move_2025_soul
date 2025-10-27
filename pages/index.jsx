@@ -34,10 +34,8 @@ const PillarCard = ({ title, text }) => (
   </motion.div>
 );
 
-const EventCard = ({ date, title, text, image, slug, url, cta = "Saber mais" }) => {
-  // Para eventos: vai ao slug. Para notícias: usa o url externo se existir.
-  const href = url ? url : (slug ? `/events/${slug}` : "#");
-  const external = Boolean(url);
+const EventCard = ({ date, title, text, image, slug, url, type = "events", cta = "Saber mais" }) => {
+  const href = url ? url : (slug ? `/${type}/${slug}` : "#");
 
   return (
     <motion.div
@@ -53,7 +51,6 @@ const EventCard = ({ date, title, text, image, slug, url, cta = "Saber mais" }) 
         <div className="mt-4">
           <a
             href={href}
-            {...(external ? { target:"_blank", rel:"noopener noreferrer" } : {})}
             className="inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold text-white shadow-sm"
             style={{ background: `linear-gradient(135deg, ${C1}, ${C2})` }}
           >
@@ -67,6 +64,7 @@ const EventCard = ({ date, title, text, image, slug, url, cta = "Saber mais" }) 
     </motion.div>
   );
 };
+
 
 
 
@@ -144,7 +142,7 @@ export default function ECHOSMoveLanding() {
     <h2 className="text-2xl md:text-3xl font-bold" style={{ color: C2 }}>Eventos</h2>
     <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {events.map((e, i) => (
-        <EventCard key={i} {...e} />
+        <EventCard key={i} {...e} type="events" />
       ))}
     </div>
   </Container>
@@ -161,7 +159,7 @@ export default function ECHOSMoveLanding() {
       {[...news]
         .sort((a, b) => new Date(b.date) - new Date(a.date))
         .map((n, i) => (
-          <EventCard key={i} {...n} cta="Ler notícia" />
+          <<EventCard key={i} {...n} type="news" cta="Ler notícia" />
         ))}
     </div>
   </Container>
