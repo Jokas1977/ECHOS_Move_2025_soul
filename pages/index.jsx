@@ -102,21 +102,49 @@ export default function ECHOSMoveLanding() {
         </Container>
       </header>
 
-      <Section id="top" className="relative overflow-hidden pt-16">
-        <DecorBackdrop />
-        <Container className="relative">
-          <motion.h1 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-4xl md:text-6xl font-extrabold tracking-tight" style={{ color: C1 }}>ECHOS Move</motion.h1>
-          <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.05 }} className="mt-4 max-w-2xl text-lg md:text-xl text-slate-700">
-            Ressonância que transforma. Um movimento para integrar conhecimento, ação, criação e comunidade — com leveza, arte e propósito.
-          </motion.p>
-          <div className="mt-8 flex flex-wrap items-center gap-3">
-            <a href="#join" className="inline-flex items-center rounded-xl px-5 py-3 text-sm md:text-base font-semibold text-white shadow-lg" style={{ background: `linear-gradient(135deg, ${C1}, ${C2})` }}>Participar agora</a>
-            <a href="#news" className="inline-flex items-center rounded-xl px-5 py-3 text-sm md:text-base font-semibold" style={{ color: C1, background: `${C1}1A` }}>
-  Explorar notícias
-</a>
+     <Section id="top" className="relative overflow-hidden pt-16">
+  <DecorBackdrop />
+  <Container className="relative">
+    <motion.h1
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="text-4xl md:text-6xl font-extrabold tracking-tight"
+      style={{ color: C1 }}
+    >
+      ECHOS Move
+    </motion.h1>
 
-        </Container>
-      </Section>
+    <motion.p
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, delay: 0.05 }}
+      className="mt-4 max-w-2xl text-lg md:text-xl text-slate-700"
+    >
+      Ressonância que transforma. Um movimento para integrar conhecimento, ação, criação e comunidade — com leveza, arte e propósito.
+    </motion.p>
+
+    {/* BOTÕES — garante que este <div> fecha antes do </Container> */}
+    <div className="mt-8 flex flex-wrap items-center gap-3">
+      <a
+        href="#join"
+        className="inline-flex items-center rounded-xl px-5 py-3 text-sm md:text-base font-semibold text-white shadow-lg"
+        style={{ background: `linear-gradient(135deg, ${C1}, ${C2})` }}
+      >
+        Participar agora
+      </a>
+
+      <a
+        href="#news"
+        className="inline-flex items-center rounded-xl px-5 py-3 text-sm md:text-base font-semibold"
+        style={{ color: C1, background: `${C1}1A` }}
+      >
+        Explorar notícias
+      </a>
+    </div>
+  </Container>
+</Section>
+
 
       <Section id="vision">
         <Container>
@@ -138,7 +166,6 @@ export default function ECHOSMoveLanding() {
       </Section>
 
     
-...
 <Section id="events" className="bg-gradient-to-b from-white to-[rgba(255,255,255,0.6)]">
   <Container>
     <h2 className="text-2xl md:text-3xl font-bold" style={{ color: C2 }}>Eventos</h2>
@@ -151,9 +178,6 @@ export default function ECHOSMoveLanding() {
 </Section>
 
 
-
-  
-...
 <Section id="news">
   <Container>
     <h2 className="text-2xl md:text-3xl font-bold" style={{ color: C2 }}>Notícias</h2>
