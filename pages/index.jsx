@@ -111,8 +111,10 @@ export default function ECHOSMoveLanding() {
           </motion.p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <a href="#join" className="inline-flex items-center rounded-xl px-5 py-3 text-sm md:text-base font-semibold text-white shadow-lg" style={{ background: `linear-gradient(135deg, ${C1}, ${C2})` }}>Participar agora</a>
-            <a href="#programs" className="inline-flex items-center rounded-xl px-5 py-3 text-sm md:text-base font-semibold" style={{ color: C1, background: `${C1}1A` }}>Explorar programas</a>
-          </div>
+            <a href="#news" className="inline-flex items-center rounded-xl px-5 py-3 text-sm md:text-base font-semibold" style={{ color: C1, background: `${C1}1A` }}>
+  Explorar notícias
+</a>
+
         </Container>
       </Section>
 
@@ -159,13 +161,11 @@ export default function ECHOSMoveLanding() {
       {[...news]
         .sort((a, b) => new Date(b.date) - new Date(a.date))
         .map((n, i) => (
-          <<EventCard key={i} {...n} type="news" cta="Ler notícia" />
+          <EventCard key={i} {...n} type="news" cta="Ler notícia" />
         ))}
     </div>
   </Container>
 </Section>
-
-
 
 
       <Section id="testimonials" className="bg-[rgba(255,255,255,0.7)]">
