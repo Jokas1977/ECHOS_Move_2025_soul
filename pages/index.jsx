@@ -170,10 +170,11 @@ Da comunidade para a comunidade, somos o eco que inspira, liga e transforma.</p>
         <Container>
           <h2 className="text-2xl md:text-3xl font-bold" style={{ color: C2 }}>Pilares</h2>
           <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <PillarCard title="Conhecimento" text="Pensamento crítico e curiosidade aberta: aprender para libertar." />
-            <PillarCard title="Ação" text="Responsabilidade social, impacto local e cooperação prática." />
-            <PillarCard title="Criação" text="Expressão artística e inovação como linguagens do humano." />
-            <PillarCard title="Comunidade" text="Cuidar de pessoas, ambientes e relações que dão sentido." />
+            <PillarCard title="Inclusão" text="Acreditamos que todos têm lugar na expressão e na criação." />
+            <PillarCard title="Autenticidade" text="Promover o desenvolvimento integral de cada pessoa." />
+            <PillarCard title="Criatividade" text="Usar a arte e o movimento como ferramentas de transformação." />
+            <PillarCard title="Sustentabilidade" text="agir com responsabilidade social e ambiental." />
+            <PillarCard title="Partilha" text="Fomentar redes de colaboração e intercâmbio cultural." />
           </div>
         </Container>
       </Section>
