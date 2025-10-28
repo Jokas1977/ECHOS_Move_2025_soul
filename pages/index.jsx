@@ -132,7 +132,7 @@ export default function ECHOSMoveLanding() {
       transition={{ duration: 0.7, delay: 0.05 }}
       className="mt-4 max-w-2xl text-lg md:text-xl text-slate-700"
     >
-      Ressonância que transforma. Um movimento para integrar conhecimento, ação, criação e comunidade — com leveza, arte e propósito.
+      Um movimento inspirador de mudança e integração, que une arte, educação e bem-estar para construir comunidades mais conscientes, criativas e saudáveis.
     </motion.p>
 
     {/* BOTÕES — garante que este <div> fecha antes do </Container> */}
@@ -160,7 +160,9 @@ export default function ECHOSMoveLanding() {
       <Section id="vision">
         <Container>
           <h2 className="text-2xl md:text-3xl font-bold" style={{ color: C2 }}>Visão</h2>
-          <p className="mt-4 max-w-3xl text-slate-700">Acreditamos no poder da palavra, do corpo em movimento e da criação colaborativa para cultivar uma humanidade mais consciente e solidária. O progresso real nasce quando o indivíduo encontra o seu ritmo interior e o partilha com o mundo.</p>
+          <p className="mt-4 max-w-3xl text-slate-700">A Echos Move nasce do desejo de ecoar — unir vozes em torno do que nos move, às pessoas, às emoções e às ideias que se unem numa só vibração.
+Promovemos o bem-estar, o desenvolvimento pessoal e a integração social através da expressão criativa, do movimento e do encontro humano, criando espaços onde cada voz encontra o seu lugar e ressoa com as demais.
+Da comunidade para a comunidade, somos o eco que inspira, liga e transforma.</p>
         </Container>
       </Section>
 
