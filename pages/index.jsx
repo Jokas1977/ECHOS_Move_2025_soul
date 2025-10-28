@@ -123,7 +123,7 @@ export default function ECHOSMoveLanding() {
       className="text-4xl md:text-6xl font-extrabold tracking-tight"
       style={{ color: C1 }}
     >
-      ECHOS Move
+      ECHOES Move
     </motion.h1>
 
     <motion.p
@@ -242,7 +242,7 @@ export default function ECHOSMoveLanding() {
         <Container className="py-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <LogoMark small />
-            <p className="text-sm text-slate-600">© {new Date().getFullYear()} ECHOS Move. Todos os direitos reservados.</p>
+            <p className="text-sm text-slate-600">© {new Date().getFullYear()} ECHOES Move. Todos os direitos reservados.</p>
           </div>
           <div className="text-sm text-slate-500 flex gap-4">
             <a href="#" className="hover:opacity-80">Privacidade</a>
@@ -260,19 +260,20 @@ function LogoMark({ small = false }) {
     <div className="flex items-center gap-3">
       <img
         src="/logo-echo2.png"
-        alt="ECHOS Move logo"
+        alt="ECHOES Move logo"
         width={size}
         height={size}
         style={{ objectFit: "contain" }}
       />
       {!small && (
         <span className="font-semibold tracking-tight text-slate-900">
-          ECHOS <span className="opacity-70">Move</span>
+          ECHOES <span className="opacity-70">Move</span>
         </span>
       )}
     </div>
   );
 }
+
 
 function DecorBackdrop() {
   return (
