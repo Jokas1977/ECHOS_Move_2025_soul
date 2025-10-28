@@ -90,14 +90,25 @@ export default function ECHOSMoveLanding() {
             <LogoMark />
             <span className="sr-only">ECHOS Move</span>
           </a>
-          <nav className="hidden md:flex items-center gap-8">
-  <a href="#about" className="hover:opacity-80">Sobre</a>
-  <a href="#vision" className="hover:opacity-80">Visão</a>
-  <a href="#events" className="hover:opacity-80">Eventos</a>
-  <a href="#news" className="hover:opacity-80">Notícias</a>
-  <a href="#voices" className="hover:opacity-80">Vozes</a>
-  <a href="#contact" className="hover:opacity-80">Contactos</a>
+         <nav className="hidden md:flex items-center gap-8">
+  {[
+    { label: "Visão", href: "#vision" },
+    { label: "Pilares", href: "#pillars" },
+    { label: "Eventos", href: "#events" },
+    { label: "Notícias", href: "#news" },
+    { label: "Vozes", href: "#voices" },
+    { label: "Contactos", href: "#contact" },
+  ].map((item) => (
+    <a
+      key={item.href}
+      href={item.href}
+      className="relative text-slate-700 font-medium transition-all duration-300 hover:text-[#7da8ba] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-[#7da8ba] after:transition-all after:duration-300 hover:after:w-full"
+    >
+      {item.label}
+    </a>
+  ))}
 </nav>
+
           <a href="#join" className="hidden md:inline-flex items-center rounded-xl px-4 py-2 text-sm font-semibold text-white shadow" style={{ background: `linear-gradient(135deg, ${C2}, ${C1})` }}>Juntar‑me</a>
         </Container>
       </header>
