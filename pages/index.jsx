@@ -96,8 +96,8 @@ export default function ECHOSMoveLanding() {
     { label: "Pilares", href: "#pillars" },
     { label: "Eventos", href: "#events" },
     { label: "Notícias", href: "#news" },
-    { label: "Vozes", href: "#voices" },
-    { label: "Contactos", href: "#contact" },
+    { label: "Vozes", href: "#testimonials" },
+    { label: "Contactos", href: "#join" },
   ].map((item) => (
     <a
       key={item.href}
