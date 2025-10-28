@@ -259,7 +259,7 @@ function LogoMark({ small = false }) {
   return (
     <div className="flex items-center gap-3">
       <img
-        src="/logo-echo2.png"
+        src="/Logotipo ECHOES Move.png"
         alt="ECHOES Move logo"
         width={size}
         height={size}
